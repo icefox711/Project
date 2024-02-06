@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +57,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $str=Str::random(10);
+        $str = Str::random(10);
         $request->validate(
             [
                 'name' => 'required',
@@ -77,9 +78,20 @@ class AuthController extends Controller
             'email_verified_at' => now(),
             'role' => 'customer',
         ];
-        User::create($inforegister);
 
-       return view('customer.index');
+        $userRegis = User::create($inforegister);
+
+        $rekening = '64' . auth()->id() . now()->format('YmdHis');
+        $wallet = [
+            'rekening' => $rekening,
+            'id_user' => $userRegis->id,
+            'saldo' => 0,
+            'status' => "aktif",
+        ];
+
+        Wallet::create($wallet);
+
+        return view('customer.index');
     }
 
     public function logout()
