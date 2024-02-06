@@ -22,8 +22,10 @@ use App\Http\Controllers\TransaksiController;
 
 
 
-Route::get('/', [AuthController::class, 'index']);
-Route::post('/', [AuthController::class, 'login'])->name('login');
+Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('/', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'create'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'userAkses:kantin'])->group(function () {

@@ -10,7 +10,7 @@
     <title>Login</title>
     <link href="{{asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/css/login.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/auth.css')}}" rel="stylesheet">
   </head>
   <body>
     <div class="center">
@@ -28,7 +28,7 @@
           <label>Password</label>
         </div>
         <input type="submit" value="Login" />
-        <div class="signup_link"></div>
+        <div class="signup_link">Don't have an account? <a href="{{ route('register') }}">Sign Up</a></div>
       </form>
     </div>
     <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>

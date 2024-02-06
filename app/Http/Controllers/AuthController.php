@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\SessionGuard\create;
 
 class AuthController extends Controller
 {
@@ -53,22 +56,30 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        $str=Str::random(10);
         $request->validate(
-        [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-        ],
-        [
-            'fullname.required' => 'nama wajib diisi',
-            'email.required' => 'email wajib diisi',
-            'password,required' => 'password wajib diisi',
-        ]);
+            [
+                'name' => 'required',
+                'email' => 'required',
+                'password' => 'required',
+            ],
+            [
+                'fullname.required' => 'nama wajib diisi',
+                'email.required' => 'email wajib diisi',
+                'password,required' => 'password wajib diisi',
+            ]
+        );
         $inforegister = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
+            'remember_token' => $str,
+            'email_verified_at' => now(),
+            'role' => 'customer',
         ];
+        User::create($inforegister);
+
+       return view('customer.index');
     }
 
     public function logout()
