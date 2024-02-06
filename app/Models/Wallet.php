@@ -10,12 +10,10 @@ class Wallet extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-    ];
+    protected $guarded = [];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

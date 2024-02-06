@@ -91,7 +91,7 @@ class AuthController extends Controller
 
         Wallet::create($wallet);
 
-        return view('customer.index');
+        return redirect()->route('login')->with('success', 'Berhasil register');
     }
 
     public function logout()
