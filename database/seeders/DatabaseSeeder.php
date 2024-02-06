@@ -20,19 +20,10 @@ class DatabaseSeeder extends Seeder
         //User Seeder
        $dataUser = [
         [
-        'name' => 'admin',
-        'email' => 'admin@gmail.com',
-        'role'=> 'admin',
-        'password' => bcrypt ('admin'),
-        'email_verified_at' => now(),
-        'remember_token' => Str::random(10),
-        ],
-        [
         'name' => 'bank',
         'email' => 'bank@gmail.com',
         'role'=> 'bank',
         'password' => bcrypt ('bank'),
-        'email_verified_at' => now(),
         'remember_token' => Str::random(10),
         ],
         [
@@ -40,7 +31,6 @@ class DatabaseSeeder extends Seeder
         'email' => 'kantin@gmail.com',
         'role'=> 'kantin',
         'password' => bcrypt ('kantin'),
-        'email_verified_at' => now(),
         'remember_token' => Str::random(10),
         ],
         [
@@ -48,7 +38,6 @@ class DatabaseSeeder extends Seeder
         'email' => 'customer@gmail.com',
         'role'=> 'customer',
         'password' => bcrypt ('customer'),
-        'email_verified_at' => now(),
         'remember_token' => Str::random(10),
         ],
     ];
@@ -106,12 +95,6 @@ class DatabaseSeeder extends Seeder
         [
             'rekening' => '643456789012',
             'id_user' => 3,
-            'saldo' => 100000,
-            'status' => 'aktif'
-        ],
-        [
-            'rekening' => '644567890123',
-            'id_user' => 4,
             'saldo' => 100000,
             'status' => 'aktif'
         ],

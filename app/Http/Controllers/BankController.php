@@ -6,6 +6,7 @@ use App\Models\TopUp;
 use App\Models\Wallet;
 use App\Models\Withdrawl;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Withdrawal;
 use App\Http\Controllers\Controller;
 
 class BankController extends Controller
@@ -147,7 +148,7 @@ class BankController extends Controller
         $title = 'Laporan Withdrawal Harian';
 
         $today = now()->toDateString();
-        $withdrawals = Withdrawal::whereDate('created_at', $today)->get();
+        $withdrawals = Withdrawl::whereDate('created_at', $today)->get();
         $totalNominal = $withdrawals->sum('nominal');
 
         return view('bank.laporan.withdrawal-harian', compact('withdrawals', 'totalNominal', 'title'));

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\SessionGuard\create;
@@ -70,12 +71,13 @@ class AuthController extends Controller
                 'password,required' => 'password wajib diisi',
             ]
         );
+
+        $emailverif = now();
         $inforegister = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'remember_token' => $str,
-            'email_verified_at' => now(),
             'role' => 'customer',
         ];
 
