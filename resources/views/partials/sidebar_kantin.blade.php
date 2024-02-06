@@ -1,36 +1,42 @@
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('kantin.index')}}">
-          <div class="sidebar-brand-icon">
-            <img src="img/logo/logo2.png">
-          </div>
-          <div class="sidebar-brand-text mx-3">Halaman Kantin</div>
-        </a>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ route('kantin.index')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-        </li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">
-          Features
-        </div>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{{ route('kantin.index') }}" class="brand-link">
+    <span class="brand-text font-weight-light">MetMart Kantin</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-            aria-controls="collapseTable">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Data Kantin</span>
+          <a href="{{ route('kantin.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Dashboard
+            </p>
           </a>
-          <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Data kantin</h6>
-              <a class="collapse-item" class= "{{ $title === 'Data Kategori' ? 'active' : ''}}" href="{{ route('kategori.index')}}">Data Kategori</a>
-              <a class="collapse-item" class="{{$title === 'Data Produk' ? 'active' : ''}} "  href="{{ route('produk.index')}}">Data Produk</a>
-            </div>
-          </div>
         </li>
-        <hr class="sidebar-divider">
-        <div class="version" id="version-ruangadmin"></div>
+        <li class="nav-item">
+          <a href="{{ route('kategori.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Kategori
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('produk.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Produk
+            </p>
+          </a>
+        </li>
       </ul>
-      <!-- Sidebar -->
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

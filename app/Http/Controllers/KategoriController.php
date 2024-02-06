@@ -14,9 +14,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $title = 'Data Kategori';
+        $title = 'MetMart | Kategori';
         $kategoris = Kategori::all();
-
         return view('kantin.kategori', compact('title', 'kategoris'));
     }
 

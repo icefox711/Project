@@ -18,7 +18,7 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $title = 'Data produk';
+        $title = 'MetMart | Produk';
         $produks = Produk::with('kategori')->get();
         $kategoris = Kategori::all();
         return view('kantin.produk', compact('produks', 'title', 'kategoris'));
