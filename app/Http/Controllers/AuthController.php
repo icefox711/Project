@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-   public function index() 
+    public function index()
     {
         return view('auth.login');
     }
 
-    public function login(Request $request) 
+    public function login(Request $request)
     {
         $request->validate(
             [
-                'email'=>'required',
-                'password'=>'required',
+                'email' => 'required',
+                'password' => 'required',
             ],
             [
                 'email.required' => 'Email wajib diisi',
@@ -27,23 +27,48 @@ class AuthController extends Controller
         );
 
         $infologin = [
-            'email'=>$request->email,
-            'password'=>$request->password,
+            'email' => $request->email,
+            'password' => $request->password,
         ];
 
         if (Auth::attempt($infologin)) {
             if (Auth::user()->role == "admin") {
                 return redirect()->route('admin.index');
-            }else if (Auth::user()->role == "customer") {
+            } else if (Auth::user()->role == "customer") {
                 return redirect()->route('customer.index');
-            }else if (Auth::user()->role == "bank") {
+            } else if (Auth::user()->role == "bank") {
                 return redirect()->route('bank.index');
-            }else if (Auth::user()->role == "kantin") {
+            } else if (Auth::user()->role == "kantin") {
                 return redirect()->route('kantin.index');
             }
         } else {
             return redirect(route('login'))->withErrors('Email dan Password tidak sesuai')->withInput();
         }
+    }
+
+    public function create()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate(
+        [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ],
+        [
+            'fullname.required' => 'nama wajib diisi',
+            'email.required' => 'email wajib diisi',
+            'password,required' => 'password wajib diisi',
+        ]);
+        $inforegister = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
     }
 
     public function logout()

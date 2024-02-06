@@ -14,10 +14,10 @@
           </div>
         </nav>
         <div class="container">
-            <div class="col-12">
+            <div class="col-12 mt-5">
                 <div class="card mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Data Kategori</h6>
                     </div>
                     <button type="button" class="btn btn-success col-2 mt-2 ml-3" data-target="#tambahModal" data-toggle="modal">Tambah Data</button>
                     <div class="table-responsive p-3">

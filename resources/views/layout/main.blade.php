@@ -13,7 +13,6 @@
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/adminlte.min.css') }}" rel='stylesheet'>
     <link href="{{ asset('assets/css/login.min.css') }}" rel='stylesheet'>
-    
 </head>
 
 

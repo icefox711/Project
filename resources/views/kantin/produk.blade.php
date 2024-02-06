@@ -1,16 +1,25 @@
 @extends('layout.main')
 @section('content')
-
-    <div class="container-fluid">
-        <!-- Row -->
-        <div class="row">
-            <!-- Datatables -->
-            <div class="col-lg-12">
+<div class="page-ycontainer">
+    <div class="row">
+      <div class="col" style="padding-left: 250px">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <div class="container-fluid">
+            <h4>{{ auth()->user()->name }}</h4>
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+              <li class="nav-item float-right">
+                <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container">
+            <div class="col-lg-12 mt-5">
                 <div class="card mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Data Produk</h6>
                     </div>
-                    <button type="button" class="btn btn-danger col-2" data-target="#tambahModal" data-toggle="modal">Tambah Data</button>
+                    <button type="button" class="btn btn-success col-2 mt-2 ml-3" data-target="#tambahModal" data-toggle="modal">Tambah Data</button>
                     <div class="table-responsive p-3">
                         <table class="table align-items-center table-flush text-center" id="dataTable">
                             <thead class="thead-light">
@@ -52,103 +61,104 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
-
-    <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahModalLabel">Tambah produk</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulir Tambah -->
-                    <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="nama_produk">Nama produk</label>
-                            <input type="text" class="form-control" id="nama_produk" name="nama_produk" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="harga">Harga</label>
-                            <input type="text" class="form-control" id="harga" name="harga" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="stok">Stok</label>
-                            <input type="number" class="form-control" id="stok" name="stok" required>
-                        </div>
-                        <div class="form-gorup mb-3" >
-                            <label for="nama_kategori">Kategori</label>
-                            <select class="form-control" name="id_kategori">
-                                @foreach ($kategoris as $kategori)
-                                    <option  value="{{ $kategori->id }}">
-                                        {{ $kategori->nama_kategori}}
-                                    </option>
-                                @endforeach
-                        </div>
-                        <div class="form-group">
-                            <label for="desc">Deskripsi</label>
-                            <input type="text" class="form-control" id="desc" name="desc" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="foto">Foto</label>
-                            <input type="file" class="form-control-file" id="foto" name="foto">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Tambahkan</button>
-                    </form>
-                </div>
+  </div>
+  
+  <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahModalLabel">Tambah produk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulir Tambah -->
+                <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="nama_produk">Nama produk</label>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input type="text" class="form-control" id="harga" name="harga" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stok">Stok</label>
+                        <input type="number" class="form-control" id="stok" name="stok" required>
+                    </div>
+                    <div class="form-gorup mb-3" >
+                        <label for="nama_kategori">Kategori</label>
+                        <select class="form-control" name="id_kategori">
+                            @foreach ($kategoris as $kategori)
+                                <option  value="{{ $kategori->id }}">
+                                    {{ $kategori->nama_kategori}}
+                                </option>
+                            @endforeach
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Deskripsi</label>
+                        <input type="text" class="form-control" id="desc" name="desc" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Foto</label>
+                        <input type="file" class="form-control-file" id="foto" name="foto">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tambahkan</button>
+                </form>
             </div>
         </div>
     </div>
-    @foreach($produks as $produk)
-    <!-- Modal untuk Edit -->
-    <div class="modal fade" id="editModal{{ $produk->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="editModal{{ $produk->id }}Label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModal{{ $produk->id }}Label">Edit produk</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulir Edit -->
-                    <form action="{{ route('produk.update', $produk->id) }}"
-                        method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
-                            <label for="nama_produk">Nama produk</label>
-                            <input type="text" class="form-control" id="nama_produk" name="nama_produk"
-                                value="{{ $produk->nama_produk }}">
-                            <label for="harga">Harga</label>
-                            <input type="text" class="form-control" id="harga" name="harga"
-                                value="{{ $produk->harga }} ">
-                            <label for="stok">Stok</label>
-                            <input type="text" class="form-control" id="stok" name="stok"
-                                value="{{ $produk->stok}} " >
-                            <label for="id_kategori">Kategori</label>
-                            <select name="id_kategori" id="id_kategori" class="form-control">
-                                @foreach ($kategoris as $kategori)
-                                    <option value="{{ $kategori->id }}" {{ $produk->id_kategori === $kategori->id ? 'selected' : '' }}>{{ $kategori->nama_kategori }}</option>
-                                @endforeach
-                            </select>
-                            <label for="desc">Desc</label>
-                            <input type="text" name="desc" class="form-control" id="desc" value="{{ $produk->desc }}">
-                            <label for="foto">Foto</label>
-                            <input type="file" id="foto" name="foto">
-                            
-                        </div>
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    </form>
-                </div>
+</div>
+@foreach($produks as $produk)
+<!-- Modal untuk Edit -->
+<div class="modal fade" id="editModal{{ $produk->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="editModal{{ $produk->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModal{{ $produk->id }}Label">Edit produk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulir Edit -->
+                <form action="{{ route('produk.update', $produk->id) }}"
+                    method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="nama_produk">Nama produk</label>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk"
+                            value="{{ $produk->nama_produk }}">
+                        <label for="harga">Harga</label>
+                        <input type="text" class="form-control" id="harga" name="harga"
+                            value="{{ $produk->harga }} ">
+                        <label for="stok">Stok</label>
+                        <input type="text" class="form-control" id="stok" name="stok"
+                            value="{{ $produk->stok}} " >
+                        <label for="id_kategori">Kategori</label>
+                        <select name="id_kategori" id="id_kategori" class="form-control">
+                            @foreach ($kategoris as $kategori)
+                                <option value="{{ $kategori->id }}" {{ $produk->id_kategori === $kategori->id ? 'selected' : '' }}>{{ $kategori->nama_kategori }}</option>
+                            @endforeach
+                        </select>
+                        <label for="desc">Desc</label>
+                        <input type="text" name="desc" class="form-control" id="desc" value="{{ $produk->desc }}">
+                        <label for="foto">Foto</label>
+                        <input type="file" id="foto" name="foto">
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 @endforeach
-
 @endsection
 
