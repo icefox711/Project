@@ -1,37 +1,34 @@
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('bank.index')}}  ">
-          <div class="sidebar-brand-icon">
-            <img src="img/logo/logo2.png">
-          </div>
-          <div class="sidebar-brand-text mx-3">Halaman Bank</div>
-        </a>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ route('bank.index')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-        </li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">
-          Features
-        </div>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{{ route('bank.index') }}" class="brand-link">
+    <span class="brand-text font-weight-light">MetMart Admin</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-            aria-controls="collapseTable">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Transaksi</span>
+          <a href="{{ route('bank.topup') }}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Top up
+            </p>
           </a>
-          <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" class="{{$title === 'Data Produk' ? 'active' : ''}} "  href="{{route('bank.topup')}}">Top Up</a>
-            </div>
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" class="{{$title === '' ? 'active' : ''}} "  href=" {{route('bank.withdrawl')}} ">Tarik Tunai</a>
-            </div>
-          </div>
         </li>
-        <hr class="sidebar-divider">
-        <div class="version" id="version-ruangadmin"></div>
+        <li class="nav-item">
+          <a href="{{ route('bank.withdrawl') }}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Withdrawal
+            </p>
+          </a>
+        </li>
       </ul>
-      <!-- Sidebar -->
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

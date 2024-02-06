@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-<div class="main-content-inner">
+<div class="container">
     <div class="row">
         <!-- table dark start -->
         <div class="col-12 mt-5">
