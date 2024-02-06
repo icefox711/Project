@@ -65,7 +65,7 @@ class AuthController extends Controller
                 'password' => 'required',
             ],
             [
-                'fullname.required' => 'nama wajib diisi',
+                'name.required' => 'nama wajib diisi',
                 'email.required' => 'email wajib diisi',
                 'password,required' => 'password wajib diisi',
             ]
