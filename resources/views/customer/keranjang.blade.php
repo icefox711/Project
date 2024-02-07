@@ -17,6 +17,7 @@
                                         <th scope="col">Harga</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Total Harga</th>
+                                        <th scope="col"> aksi</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -43,7 +44,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                        onclick="return confirm('Anda yakin ingin menghapus produk ini?')" class="btn btn-success-outline">Delete</button>
+                                                        onclick="return confirm('Anda yakin ingin menghapus produk ini?')" class="btn btn-danger">Delete</button>
                                                 </form>
 
                                             </td>

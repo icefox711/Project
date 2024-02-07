@@ -165,7 +165,7 @@ class TransaksiController extends Controller
 
         $totalHarga = $transaksis->sum('total_harga');
 
-        return view('reports.daily-transaction', compact('transaksis', 'totalHarga', 'title'));
+        return view('customer.laporan.transaksi', compact('transaksis', 'totalHarga', 'title'));
     }
 
     public function laporanTransaksi()
@@ -176,6 +176,6 @@ class TransaksiController extends Controller
 
         $totalHarga = $transaksis->sum('total_harga');
 
-        return view('reports.daily-transaction', compact('transaksis', 'totalHarga', 'title'));
+        return view('customer.laporan.transaksi', compact('transaksis', 'totalHarga', 'title'));
     }
 }

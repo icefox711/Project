@@ -47,6 +47,11 @@ Route::middleware(['auth', 'userAkses:customer'])->group(function () {
     Route::get('/customer/keranjang/cetak', [TransaksiController::class, 'cetakTransaksi'])->name('cetak.transaksi');
     Route::post('/customer/keranjang/{id}', [TransaksiController::class, 'addToCart'])->name('addToCart');
     Route::delete('/customer/keranjang/destroy/{id}', [TransaksiController::class, 'keranjangDestroy'])->name('keranjang.destroy');
+
+    Route::get('/customer/riwayat/transaksi', [TransaksiController::class, 'laporanTransaksiHarian'])->name('customer.riwayat.transaksi');
+    Route::get('/customer/riwayat/transaksi/{invoice}', [TransaksiController::class, 'detailRiwayatTransaksi'])->name('customer.transaksi.detail');
+    Route::get('/customer/riwayat/topup', [BankController::class, 'riwayatTopup'])->name('customer.riwayat.topup');
+    Route::get('/customer/riwayat/withdrawal', [BankController::class, 'riwayatWithdrawal'])->name('customer.riwayat.withdrawal');
 });
 
 Route::middleware(['auth', 'userAkses:bank'])->group(function () {

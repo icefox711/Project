@@ -1,8 +1,8 @@
 @extends('layout.main')
 
 @section('content')
-    
-<div class="main-content-inner">
+       
+<div class="container">
     <div class="row">
         <div class="col-lg-12 mt-5">
             <div class="card">

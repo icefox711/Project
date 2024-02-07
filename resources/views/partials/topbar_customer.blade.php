@@ -25,5 +25,22 @@
         <a href="{{ route('logout') }}" class="nav-link">Logout</a>
       </li>
     </ul>
+    <div class="dropdown">
+      <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm dropdown-toggle" type="button"
+          id="reportDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+      </button>
+      <div class="dropdown-menu" aria-labelledby="reportDropdown">
+          <a class="dropdown-item" href="{{ route('customer.riwayat.transaksi') }}">
+              <i class="fas fa-file-invoice-dollar"></i> Transaksi
+          </a>
+          <a class="dropdown-item" href="{{ route('customer.riwayat.topup') }}">
+              <i class="fas fa-file-invoice-dollar"></i> Top Up
+          </a>
+          <a class="dropdown-item" href="{{ route('customer.riwayat.withdrawal') }}">
+              <i class="fas fa-file-invoice-dollar"></i> Tarik Tunai
+          </a>
+      </div>
+  </div>
   </div>
 </nav>
